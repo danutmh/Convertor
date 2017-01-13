@@ -4,12 +4,13 @@
 #include <iomanip>
 using namespace std;
 short Ucurent,Uconversie;
-long double Temperatura(short UCurent,short UConversie,long double marime);
-long double Densitatea(short UCurent,short UConversie,long double a);
-long double Timp(short UCurent,short UConversie,long double a);
+ double Temperatura(short UCurent,short UConversie, double marime);
+ double Densitatea(short UCurent,short UConversie, double a);
+ double Timp(short UCurent,short UConversie, double a);
+ double Presiune(short UCurent,short UConversie, double a);
 
 void Meniu()
-{short select,c,dc;long double a;
+{short select,c,dc; double a;
 menu:
     select=0;
 cout<<"1)Lungime"<<endl;
@@ -178,11 +179,33 @@ case 8:
     system("CLS");
     goto menu;
 case 9:
+    presiune:
     cout<<"0)Meniu anterior"<<endl;
-    cout<<"1)mmHG/Milimetri coloana de mercur"<<endl;
-    cout<<"2)Pascali"<<endl;
-    cout<<"3)Bari"<<endl;
-    cout<<"4)Atmosfere"<<endl;
+    cout<<"1)Pascali"<<endl;
+    cout<<"2)Bari"<<endl;
+    cout<<"3)PSI"<<endl;
+    cout<<"4)mmHG/Milimetri coloana de mercur"<<endl;
+    cout<<"5)Atmosfere"<<endl;
+    cout<<"Selectati unitatea curenta:";cin>>c;cout<<endl;
+    if(c==0)
+    {system("CLS");
+    goto menu;}
+    if(c<0||c>5)
+    {system("CLS");
+        goto presiune;}
+cout<<"Selectati unitatea in care doriti sa transformati:";cin>>dc;cout<<endl;
+    if(dc==0)
+    {system("CLS");
+    goto menu;}
+    if(dc<0||dc>5)
+    {system("CLS");
+        goto presiune;}
+cout<<"Cantitatea:";cin>>a;cout<<endl;
+cout<<"Rezultatul este:"<<Presiune(c,dc,a);cout<<endl;
+cin.get();
+cin.get();
+system("CLS");
+goto presiune;
 
   cin.get();
     system("CLS");
@@ -225,7 +248,7 @@ cin.get();
 
     }
 }
-long double Temperatura(short UCurent,short UConversie,long double marime)
+ double Temperatura(short UCurent,short UConversie, double marime)
 {if(UCurent==1&&UConversie==2)
 return marime*1.8+32;
 else if(UCurent==1&&UConversie==3)
@@ -240,7 +263,7 @@ else if(UCurent==3&&UConversie==2)
     return (marime-273.15)*1.8+32;
 
 }
-long double Densitatea(short UCurent,short UConversie,long double a)
+ double Densitatea(short UCurent,short UConversie, double a)
 {if(UCurent>0&&UCurent<5&&UConversie<5&&UConversie>0)
  return a*pow(10,3*(UCurent-UConversie));
  else if(UCurent==5&&UConversie<5&&UConversie>0)
@@ -249,7 +272,7 @@ long double Densitatea(short UCurent,short UConversie,long double a)
   return a*pow(10,3*(UCurent-UConversie+1))*pow(10,-3);
 
 }
-long double Timp(short UCurent,short UConversie,long double a)
+ double Timp(short UCurent,short UConversie, double a)
 {if(UCurent==1&&UConversie==2)
  return a/pow(10,3);
  if(UCurent==1&&UConversie<5&&UConversie>2)
@@ -310,7 +333,49 @@ long double Timp(short UCurent,short UConversie,long double a)
     return a*365;
 
 }
+ double Presiune(short UCurent,short UConversie, double a)
+{if(UCurent==1&&UConversie==2)
+    return a/pow(10,5);
+ if(UCurent==1&&UConversie==3)
+    return a*1,45038/pow(10,4);
+ if(UCurent==1&&UConversie==4)
+    return a*750062/pow(10,8);
+ if(UCurent==1&&UConversie==5)
+    return a*986923*pow(10,11);
+ if(UCurent==2&&UConversie==1)
+    return a*pow(10,5);
+ if(UCurent==2&&UConversie==3)
+    return a*1450377/pow(10,5);
+ if(UCurent==2&&UConversie==4)
+    return a*750.062;
+ if(UCurent==2&&UConversie==5)
+    return a*0.98692;
+ if(UCurent==3&&UConversie==2)
+    return a*6894757/pow(10,8);
+ if(UCurent==3&&UConversie==1)
+    return a*6894.757;
+ if(UCurent==3&&UConversie==4)
+    return a*51.715217;
+ if(UCurent==3&&UConversie==5)
+    return a*68046/pow(10,6);
+ if(UCurent==4&&UConversie==1)
+    return a*133.322;
+ if(UCurent==4&&UConversie==2)
+    return a*133322/pow(10,8);
+ if(UCurent==4&&UConversie==3)
+    return a*193367/pow(10,7);
+ if(UCurent==4&&UConversie==5)
+    return a*131579/pow(10,8);
+ if(UCurent==5&&UConversie==1)
+    return a*101325;
+ if(UCurent==5&&UConversie==2)
+    return a*1.01325;
+ if(UCurent==5&&UConversie==3)
+    return a*14695949*pow(10,6);
+ if(UCurent==5&&UConversie==4)
+    return a*760;
 
+}
 int main()
 {
 Meniu();
