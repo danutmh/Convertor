@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1484294149 source:c:\users\admin\desktop\iad\info\proiect\convertor\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+
