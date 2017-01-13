@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1484294149 source:c:\users\admin\desktop\iad\info\proiect\convertor\main.cpp
+1484337805 source:c:\users\admin\desktop\iad\info\proiect\convertor\main.cpp
 	<iostream>
 	<cstdlib>
-	<stdio.h>
+	<math.h>
+	<iomanip>
 
