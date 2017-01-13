@@ -2,7 +2,7 @@
 #include <cstdlib> //system("CLS");
 #include <stdio.h>
 using namespace std;
-short x;
+short Ucurent,Uconversie
 void Meniu()
 {short select;long double a;
 menu:
@@ -108,7 +108,6 @@ cout<<"0)Meniu anterior"<<endl;
 cout<<"1)Grade Celsius"<<endl;
 cout<<"2)Grade Farenheit"<<endl;
 cout<<"3)Grade Kelvin"<<endl;
-cout<<"4)Grade Rankine"<<endl;
 
 cin>>x;
 if(x==0)
